@@ -26,7 +26,9 @@ const Home = () => {
       <Header />
       <h2>Cart</h2>
       {Object.keys(items).map((item) => (
-        <Item>{items[item]}</Item>
+        <Item itemId={item} key={item}>
+          {items[item]}
+        </Item>
       ))}
       <NewItem />
       <CheckoutButton>Check Out</CheckoutButton>

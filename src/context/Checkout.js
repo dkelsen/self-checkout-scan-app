@@ -1,4 +1,4 @@
-import React, { useState, useMemo, createContext } from "react";
+import React, { useState, useMemo, createContext, useCallback } from "react";
 
 const dummyValues = {
   id1: "Toothbrush",
@@ -7,12 +7,31 @@ const dummyValues = {
   id4: "Cereal",
 };
 
-export const CheckoutContext = createContext({ items: dummyValues });
+export const CheckoutContext = createContext({
+  items: dummyValues,
+  deleteItem: () => {
+    /* */
+  },
+});
 
 export default function Checkout({ children }) {
   const [items, setItems] = useState(dummyValues);
 
-  const value = useMemo(() => ({ items, setItems }), [items, setItems]);
+  const deleteItem = useCallback(
+    (key) =>
+      setItems((prevState) => {
+        const newState = { ...prevState };
+        delete newState[key];
+
+        return newState;
+      }),
+    []
+  );
+
+  const value = useMemo(
+    () => ({ items, setItems, deleteItem }),
+    [items, setItems, deleteItem]
+  );
 
   return (
     <CheckoutContext.Provider value={value}>

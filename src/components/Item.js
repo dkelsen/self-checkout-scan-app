@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,14 +8,19 @@ import {
   faPlusSquare,
 } from "@fortawesome/free-solid-svg-icons";
 
+import { CheckoutContext } from "../context/Checkout";
+
 const NewItemWrapper = styled.div`
   cursor: pointer;
+  display: flex;
+  align-items: center;
 
   p {
     display: inline;
   }
 
   svg {
+    height: 20px;
     margin-right: 10px;
   }
 `;
@@ -45,21 +51,23 @@ const Wrapper = styled.div`
 const Options = styled.span`
   svg:first-of-type {
     margin-right: 10px;
+    opacity: 0.5; // show as disabled
   }
 
-  svg {
+  svg:nth-of-type(2) {
     cursor: pointer;
-    opacity: 0.5; // show as disabled
   }
 `;
 
-const Item = ({ children }) => {
+const Item = ({ children, itemId }) => {
+  const { deleteItem } = useContext(CheckoutContext);
+
   return (
     <Wrapper>
       <span>{children}</span>
       <Options>
         <FontAwesomeIcon icon={faPencil} />
-        <FontAwesomeIcon icon={faTrash} />
+        <FontAwesomeIcon icon={faTrash} onClick={() => deleteItem(itemId)} />
       </Options>
     </Wrapper>
   );
@@ -67,6 +75,7 @@ const Item = ({ children }) => {
 
 Item.propTypes = {
   children: PropTypes.string,
+  ItemId: PropTypes.string,
 };
 
 export default Item;
