@@ -55,7 +55,7 @@ export default createGlobalStyle`
     h1, h2, h3, h4, h5, h6 {
         font-family: ${({ theme }) => theme.fonts.header};
     }
-    p, div, span, li, ul, a {
+    p, div, span, li, ul, a, button {
         font-family: ${({ theme }) => theme.fonts.body};
     }
 `;
