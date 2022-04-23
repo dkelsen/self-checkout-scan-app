@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import PropTypes from "prop-types";
 
 const Wrapper = styled.button`
   width: 100px;
@@ -29,15 +30,23 @@ const Wrapper = styled.button`
 const Button = ({
   children,
   flat,
+  className,
   onClick = () => {
     /* */
   },
 }) => {
   return (
-    <Wrapper onClick={onClick} flat={flat}>
+    <Wrapper onClick={onClick} flat={flat} className={className}>
       {children}
     </Wrapper>
   );
+};
+
+Button.propTypes = {
+  children: PropTypes.string,
+  flat: PropTypes.bool,
+  classname: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 export default Button;

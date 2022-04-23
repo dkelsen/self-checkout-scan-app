@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
 
@@ -31,6 +32,10 @@ const Item = ({ children }) => {
       </Options>
     </Wrapper>
   );
+};
+
+Item.propTypes = {
+  children: PropTypes.string,
 };
 
 export default Item;
