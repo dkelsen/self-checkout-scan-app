@@ -1,8 +1,10 @@
+import { useContext } from "react";
 import styled from "styled-components";
 
 import Header from "../components/Header";
 import Item, { NewItem } from "../components/Item";
 import Button from "../components/Button";
+import { CheckoutContext } from "../context/Checkout";
 
 const CheckoutButton = styled(Button)`
   margin: auto auto 0 auto;
@@ -17,11 +19,15 @@ const Container = styled.div`
 `;
 
 const Home = () => {
+  const { items } = useContext(CheckoutContext);
+
   return (
     <Container>
       <Header />
       <h2>Cart</h2>
-      <Item>Item Name</Item>
+      {Object.keys(items).map((item) => (
+        <Item>{items[item]}</Item>
+      ))}
       <NewItem />
       <CheckoutButton>Check Out</CheckoutButton>
     </Container>

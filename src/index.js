@@ -5,6 +5,8 @@ import Helmet from "react-helmet";
 import App from "./App";
 import Theme from "./Theme";
 import GlobalCSS from "./global.css";
+import Router from "./context/Routing";
+import Checkout from "./context/Checkout";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,7 +20,11 @@ ReactDOM.render(
     </Helmet>
     <Theme>
       <GlobalCSS />
-      <App />
+      <Router>
+        <Checkout>
+          <App />
+        </Checkout>
+      </Router>
     </Theme>
   </React.StrictMode>,
   document.getElementById("root")
