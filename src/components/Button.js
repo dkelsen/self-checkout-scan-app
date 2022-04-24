@@ -2,10 +2,8 @@ import styled, { css } from "styled-components";
 import PropTypes from "prop-types";
 
 const Wrapper = styled.button`
-  width: 100px;
-
   border: none;
-  padding: 10px 0;
+  padding: 15px;
   border-radius: 5px;
   cursor: pointer;
   font-weight: 500;

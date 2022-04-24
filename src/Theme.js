@@ -14,9 +14,9 @@ const theme = {
     header: "Roboto, sans-serif",
   },
   fontSizes: {
-    small: "1em",
-    medium: "2em",
-    large: "3em",
+    small: "0.5em",
+    medium: "1em",
+    large: "2em",
   },
 };
 

@@ -54,10 +54,11 @@ export default createGlobalStyle`
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: ${({ theme }) => theme.fonts.header};
-    font-size: ${({ theme }) => theme.fontSizes.medium};
+    font-size: ${({ theme }) => theme.fontSizes.large};
     margin-bottom: 15px;
   }
   p, div, span, li, ul, a, button {
     font-family: ${({ theme }) => theme.fonts.body};
+    font-size: ${({ theme }) => theme.fontSizes.medium};
   }
 `;

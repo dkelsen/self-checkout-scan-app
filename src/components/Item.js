@@ -56,6 +56,7 @@ const Options = styled.span`
 
   svg:nth-of-type(2) {
     cursor: pointer;
+    color: ${({ theme }) => theme.colors.danger};
   }
 `;
 

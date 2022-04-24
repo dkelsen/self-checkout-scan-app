@@ -9,6 +9,7 @@ import { RoutingContext, pagesMapping } from "../context/Routing";
 
 const CheckoutButton = styled(Button)`
   margin: auto auto 0 auto;
+  width: 200px;
 `;
 
 const Container = styled.div`
