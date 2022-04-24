@@ -1,6 +1,11 @@
-# Getting Started with Create React App
+# Shoppeur
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Self checkout app for web on mobile.
+
+## Setup
+
+To set up this project, run `npm install`.\
+It is recommended to install [ngrok](https://ngrok.com/) for easier development on mobile.
 
 ## Available Scripts
 
@@ -14,57 +19,33 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+When accessing your development build through ngrok, make sure to use the URL containing `https` to enable camera usage in the browser.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `npm run storybook`
+
+Opens storybook at [http://localhost:6006](http://localhost:6006) with all of your components specified in `src/stories`.
 
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The build is minified and the filenames include the hashes.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `npm run deploy`
 
-### `npm run eject`
+Builds and deploys the app using Github Pages to the url specified in the home property in the package.json file, i.e. https://dkelsen.github.io/self-checkout-scan-app, where `https://{github username}.github.io/{repository name}`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Approach
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### General
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+For simplicity and due to a lack of specifications by the client, the app is limited to two screens, a (shopping) cart and scanner.
+Likewise, its functionality is kept as simple as possible with the addition and deletion of items.
+Given the limited information, the barcode is not shown to the user inside the app as it is not deemed necessary to the user experience.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Technical
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+For speed and prototyping, JavaScript is used instead of TypeScript. For an app of this scale, a simple router is used instead of React Router.
+Scanned items are centrally managed in a context which improves scalability and the ease to hook up the data to a backend.
+For styling, styled components was chosen out of familiarity and consequentially speed.
