@@ -26,6 +26,8 @@ ReactDOM.render(
         </Checkout>
       </Router>
     </Theme>
+
+    <div id="modal"></div>
   </React.StrictMode>,
   document.getElementById("root")
 );
