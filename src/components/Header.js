@@ -30,12 +30,7 @@ export const ScanHeader = () => {
 
   return (
     <Wrapper>
-      <ReturnButton
-        onClick={() => {
-          console.log("**");
-          setPage(pagesMapping.home);
-        }}
-      >
+      <ReturnButton onClick={() => setPage(pagesMapping.home)}>
         <FontAwesomeIcon icon={faArrowLeft} />
         <p>Back</p>
       </ReturnButton>
@@ -51,7 +46,10 @@ const Logo = styled.img`
 const Header = () => {
   return (
     <div>
-      <Logo src="/full_logo.png" alt="Shoppeur"></Logo>
+      <Logo
+        src={`${process.env.PUBLIC_URL}/full_logo.png`}
+        alt="Shoppeur"
+      ></Logo>
     </div>
   );
 };

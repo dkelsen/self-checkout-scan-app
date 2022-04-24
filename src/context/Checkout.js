@@ -5,12 +5,6 @@ const dummyValues = {
   id2: "Soap",
   id3: "Milk",
   id4: "Cereal",
-  // id5: "Soap",
-  // id6: "Milk",
-  // id7: "Cereal",
-  // id8: "Soap",
-  // id9: "Milk",
-  // id10: "Cereal",
 };
 
 export const CheckoutContext = createContext({

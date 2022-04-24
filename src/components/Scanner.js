@@ -58,10 +58,7 @@ const Scanner = ({ onDetected }) => {
       if (error) console.log("Error:", error);
 
       Quagga.start();
-      return () => {
-        console.log("** stop");
-        Quagga.stop();
-      };
+      return () => Quagga.stop();
     });
 
     // Detecting boxes on stream
@@ -109,7 +106,8 @@ const Scanner = ({ onDetected }) => {
     Quagga.onDetected(detected);
 
     return () => Quagga.stop();
-  }, [detected]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     // If you do not specify a target,

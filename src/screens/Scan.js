@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
+import Quagga from "quagga";
 
 import Scanner from "../components/Scanner";
 import Modal from "../components/Modal";
@@ -44,6 +45,7 @@ const Scan = () => {
   const handleDetection = (code) => {
     if (isModalOpen) return;
 
+    Quagga.stop();
     setItemCode(code);
     setIsModalOpen(true);
   };
@@ -61,9 +63,8 @@ const Scan = () => {
   return (
     <div>
       <ScanHeader />
-      <Scanner onDetected={handleDetection} />
 
-      {isModalOpen && (
+      {isModalOpen ? (
         <Confirmation>
           <h3>Item Scanned!</h3>
           <Input
@@ -77,6 +78,8 @@ const Scan = () => {
             </Button>
           </ButtonGroup>
         </Confirmation>
+      ) : (
+        <Scanner onDetected={handleDetection} />
       )}
     </div>
   );
