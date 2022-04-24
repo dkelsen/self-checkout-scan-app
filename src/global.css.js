@@ -49,8 +49,8 @@ export default createGlobalStyle`
     border-spacing: 0;
   }
 
-  #root {
-    height: 100vh;
+  html, body, #root {
+    height: 100%;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: ${({ theme }) => theme.fonts.header};
