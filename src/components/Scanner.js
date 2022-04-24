@@ -50,7 +50,10 @@ const Scanner = ({ onDetected }) => {
       if (error) console.log("Error:", error);
 
       Quagga.start();
-      return () => Quagga.stop();
+      return () => {
+        console.log("** stop");
+        Quagga.stop();
+      };
     });
 
     // Detecting boxes on stream
@@ -96,10 +99,13 @@ const Scanner = ({ onDetected }) => {
     });
 
     Quagga.onDetected(detected);
+
+    return () => Quagga.stop();
   }, []);
 
   const detected = (result) => {
-    onDetected(result.codeResult.code);
+    if (result && result.codeResult.startInfo.error < 0.3)
+      onDetected(result.codeResult.code);
   };
 
   return (

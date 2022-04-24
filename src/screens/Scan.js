@@ -6,10 +6,14 @@ import { ScanHeader } from "../components/Header";
 const Container = styled.div``;
 
 const Scan = () => {
+  const handleDetection = (code) => {
+    console.log("***", code);
+  };
+
   return (
     <Container>
       <ScanHeader />
-      <Scanner />
+      <Scanner onDetected={handleDetection} />
     </Container>
   );
 };
