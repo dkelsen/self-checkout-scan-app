@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/self-checkout-scan-app/static/js/main.f92dc428.js",
+    "index.html": "/self-checkout-scan-app/index.html",
+    "main.f92dc428.js.map": "/self-checkout-scan-app/static/js/main.f92dc428.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.f92dc428.js"
+  ]
+}
