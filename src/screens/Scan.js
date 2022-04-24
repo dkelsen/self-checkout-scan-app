@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
 
 import Scanner from "../components/Scanner";
 import Modal from "../components/Modal";
 import { ScanHeader } from "../components/Header";
 import Button from "../components/Button";
+import { RoutingContext, pagesMapping } from "../context/Routing";
+import { CheckoutContext } from "../context/Checkout";
 
 const Confirmation = styled(Modal)`
   display: flex;
@@ -33,11 +35,27 @@ const ButtonGroup = styled.div`
 `;
 
 const Scan = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const { setPage } = useContext(RoutingContext);
+  const { addItem } = useContext(CheckoutContext);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [itemCode, setItemCode] = useState("");
   const [itemName, setItemName] = useState("");
 
   const handleDetection = (code) => {
-    console.log("***", code);
+    if (isModalOpen) return;
+
+    setItemCode(code);
+    setIsModalOpen(true);
+  };
+
+  const closeScanner = () => {
+    setIsModalOpen(false);
+    setPage(pagesMapping.home);
+  };
+
+  const handleSave = () => {
+    addItem(itemCode, itemName);
+    setPage(pagesMapping.home);
   };
 
   return (
@@ -45,16 +63,18 @@ const Scan = () => {
       <ScanHeader />
       <Scanner onDetected={handleDetection} />
 
-      {isOpen && (
+      {isModalOpen && (
         <Confirmation>
           <h3>Item Scanned!</h3>
           <Input
-            placeholder="Enter Name"
+            placeholder="Enter Item Name"
             onChange={(event) => setItemName(event.target.value)}
           />
           <ButtonGroup>
-            <Button>Save</Button>
-            <Button flat>Cancel</Button>
+            <Button onClick={handleSave}>Save</Button>
+            <Button flat onClick={closeScanner}>
+              Cancel
+            </Button>
           </ButtonGroup>
         </Confirmation>
       )}

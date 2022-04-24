@@ -14,6 +14,7 @@ const NewItemWrapper = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
+  margin-bottom: 40px;
 
   p {
     display: inline;

@@ -12,6 +12,9 @@ export const CheckoutContext = createContext({
   deleteItem: () => {
     /* */
   },
+  addItem: () => {
+    /* */
+  },
 });
 
 export default function Checkout({ children }) {
@@ -28,9 +31,18 @@ export default function Checkout({ children }) {
     []
   );
 
+  const addItem = useCallback((key, item) =>
+    setItems((prevState) => {
+      const newState = { ...prevState };
+      newState[key] = item;
+
+      return newState;
+    })
+  );
+
   const value = useMemo(
-    () => ({ items, setItems, deleteItem }),
-    [items, setItems, deleteItem]
+    () => ({ items, setItems, deleteItem, addItem }),
+    [items, setItems, deleteItem, addItem]
   );
 
   return (
