@@ -57,7 +57,7 @@ export default createGlobalStyle`
     font-size: ${({ theme }) => theme.fontSizes.large};
     margin-bottom: 15px;
   }
-  p, div, span, li, ul, a, button {
+  p, div, span, li, ul, a, button, input {
     font-family: ${({ theme }) => theme.fonts.body};
     font-size: ${({ theme }) => theme.fontSizes.medium};
   }

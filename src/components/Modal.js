@@ -34,7 +34,7 @@ const Modal = ({ children, className }) => {
 };
 
 Modal.propTypes = {
-  children: PropTypes.object,
+  children: PropTypes.array,
   className: PropTypes.string,
 };
 
