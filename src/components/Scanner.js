@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import styled from "styled-components";
 import Quagga from "quagga";
 
@@ -45,6 +45,14 @@ const config = {
 };
 
 const Scanner = ({ onDetected }) => {
+  const detected = useCallback(
+    (result) => {
+      if (result && result.codeResult.startInfo.error < 0.3)
+        onDetected(result.codeResult.code);
+    },
+    [onDetected]
+  );
+
   useEffect(() => {
     Quagga.init(config, (error) => {
       if (error) console.log("Error:", error);
@@ -101,12 +109,7 @@ const Scanner = ({ onDetected }) => {
     Quagga.onDetected(detected);
 
     return () => Quagga.stop();
-  }, []);
-
-  const detected = (result) => {
-    if (result && result.codeResult.startInfo.error < 0.3)
-      onDetected(result.codeResult.code);
-  };
+  }, [detected]);
 
   return (
     // If you do not specify a target,

@@ -5,6 +5,12 @@ const dummyValues = {
   id2: "Soap",
   id3: "Milk",
   id4: "Cereal",
+  // id5: "Soap",
+  // id6: "Milk",
+  // id7: "Cereal",
+  // id8: "Soap",
+  // id9: "Milk",
+  // id10: "Cereal",
 };
 
 export const CheckoutContext = createContext({
@@ -31,13 +37,15 @@ export default function Checkout({ children }) {
     []
   );
 
-  const addItem = useCallback((key, item) =>
-    setItems((prevState) => {
-      const newState = { ...prevState };
-      newState[key] = item;
+  const addItem = useCallback(
+    (key, item) =>
+      setItems((prevState) => {
+        const newState = { ...prevState };
+        newState[key] = item;
 
-      return newState;
-    })
+        return newState;
+      }),
+    []
   );
 
   const value = useMemo(
