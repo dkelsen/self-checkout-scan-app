@@ -3,6 +3,16 @@ import Item from "../components/Item";
 export default {
   title: "Item",
   component: Item,
+  argTypes: {
+    itemName: {
+      control: "text",
+    },
+  },
 };
 
-export const Default = () => <Item>Item Name</Item>;
+const Template = ({ itemName }) => <Item>{itemName}</Item>;
+
+export const Basic = Template.bind({});
+Basic.args = {
+  itemName: "Item Name",
+};

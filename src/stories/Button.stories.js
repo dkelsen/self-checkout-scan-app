@@ -3,7 +3,16 @@ import Button from "../components/Button";
 export default {
   title: "Button",
   component: Button,
+  argTypes: {
+    flat: {
+      control: "boolean",
+    },
+  },
 };
 
-export const SolidButton = () => <Button>Save</Button>;
-export const FlatButton = () => <Button flat>Save</Button>;
+const Template = ({ ...args }) => <Button {...args}>Save</Button>;
+
+export const Basic = Template.bind({});
+Basic.args = {
+  flat: false,
+};
